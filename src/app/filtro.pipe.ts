@@ -5,9 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FiltroPipe implements PipeTransform {
 
-  transform(value: any, ...args: any[]): any {
-    console.log(value, args);
-    return {}// value.filter(item => item.color  == args[0]);    
+  transform(value: any, args: string): any {
+    console.log('value',value, args);
+    if (!args || args === " ") {
+      return value;
+  }
+    return value.filter(item => item.color  == args[0]);    
   }
 
 }

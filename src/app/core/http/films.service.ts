@@ -21,7 +21,6 @@ export class FilmsService {
     }
 
     getIdsFilms(urls: string[]) {
-        console.log('ids fils', urls)
         return from(urls).pipe(
             concatMap(url => <Observable<any>> this.httpClient.get(url))
         )
