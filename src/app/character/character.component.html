@@ -1,0 +1,28 @@
+
+<input class="form-control" type="text" [(ngModel)]="buscar">
+<div class="table-responsive">
+<table class="table">
+    <thead>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Color de ojos</th>
+        <th>Género</th>
+        <th>Films</th>        
+        <!--| filtro : buscar-->
+    </thead>
+    <tbody>
+        <tr *ngFor="let character of characters | paginate: { itemsPerPage: 10, currentPage: pagination }; let i = index">
+            <td>{{i}}</td>
+            <td>{{character.name}}</td>
+            <td>{{character.eye_color}}</td>
+            <td>{{character.gender}}</td>
+            <td>
+                <ul *ngFor="let film of character.dataCharacters">
+                    <li>{{film.name}}</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<pagination-controls (pageChange)="pagination = $event"></pagination-controls>
